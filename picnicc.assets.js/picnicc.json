@@ -1,0 +1,11 @@
+{
+  "version"  : "1.0.0" ,
+  "assets"   : [
+                "https://raw.github.com/picnicc/picnicc.js/gh-pages/picnicc.assets.js/lib/picnicc.js",
+                "https://raw.github.com/picnicc/picnicc.js/gh-pages/picnicc.assets.js/lib/helpers/config.js",
+                "https://raw.github.com/picnicc/picnicc.js/gh-pages/picnicc.assets.js/lib/helpers/utility.js",
+                "https://raw.github.com/picnicc/picnicc.js/gh-pages/picnicc.assets.js/lib/helpers/xhr.js",
+                "https://raw.github.com/picnicc/picnicc.js/gh-pages/picnicc.assets.js/lib/modules/form.js"
+              ],
+  "bits"     : []
+}  
