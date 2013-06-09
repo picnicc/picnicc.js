@@ -262,6 +262,9 @@
                                     if (parsed.bits.indexOf(fields[i].value) !== -1) {
                                         fields[i].checked = true;
                                     }
+                                    if (parsed.assets.indexOf(fields[i].value) !== -1) {
+                                        fields[i].checked = true;
+                                    }
                                 }
                             }
                         }
