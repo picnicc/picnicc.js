@@ -1,6 +1,6 @@
 /* {picnicc:_do-not-minify}  */
 /**
-* picnicc.js v1.1.1
+* picnicc.js v1.1.2
 * @author Alex Duloz ~ @alexduloz ~ http://bitspushedaround.com/
 * MIT license
 */
