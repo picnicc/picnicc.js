@@ -4,7 +4,7 @@
 * @author Alex Duloz ~ @alexduloz ~ http://bitspushedaround.com/
 * MIT license
 */
-/* {picnicc:_do-not-minify}  */
+/* { / picnicc }  */
 (function(window) {
 
 	var document = window.document;

@@ -1,4 +1,4 @@
-picnicc.js / v.1.0.0
+picnicc.js / v.1.0.1
 
 The MIT License
 
