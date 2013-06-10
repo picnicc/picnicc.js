@@ -341,7 +341,7 @@
                     self._callbacks[buildForm][mode].begins();
                 }
 
-                picnicc.xhr.request('GET', picnicc.config._transmitEndpoint, picnicc.utility.serialize(buildForm), function(code, response) {
+                picnicc.xhr.request('POST', picnicc.config._transmitEndpoint, picnicc.utility.serialize(buildForm), function(code, response) {
 
                     var parsed = picnicc.xhr.response(true);
 
