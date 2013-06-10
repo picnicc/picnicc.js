@@ -6,6 +6,10 @@ Easy interaction with the [picnicc API](https://picni.cc/api/v1).
 
 ## Change Log
 
+### 1.1.0
+
+Added valueify() + checkIf().
+
 ### 1.0.1
 
 Checkboxify assets.
