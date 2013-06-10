@@ -155,7 +155,7 @@
 
         /**
          * Tries to find [name="$NAME"] in a series of fields
-         */ 
+         */
         findName: function(name, fields) {
             var l = fields.length;
             for (var i = 0; i < l; i++) {
@@ -189,7 +189,7 @@
             self._enabled = true;
 
             var if_success,
-            if_error;
+                if_error;
 
             if_success = self.findName("if_success", buildForm.elements);
             if_error = self.findName("if_error", buildForm.elements);
@@ -259,21 +259,15 @@
                         if ((self._callbacks[buildForm]) && (self._callbacks[buildForm][mode]) && (self._callbacks[buildForm][mode].done) && picnicc.utility.isFunction(self._callbacks[buildForm][mode].done)) {
                             self._callbacks[buildForm][mode].done(theResponse);
                         } else {
-                            for (var i = 0; i < fieldsLength; i++) {
-                                if (fields[i]) {
-                                    if (parsed.bits.indexOf(fields[i].value) !== -1) {
-                                        fields[i].checked = true;
-                                    } else {
-                                        fields[i].checked = false;
-                                    }
-                                    if (parsed.assets.indexOf(fields[i].value) !== -1) {
-                                        fields[i].checked = true;
-                                    } else {
-                                        fields[i].checked = false;
-                                    }
 
-                                }
-                            }
+                            self.checkboxify("bits", theResponse.bits);
+                            self.checkboxify("assets", theResponse.assets);
+                            self.checkif("minify", "css");
+                            self.checkif("minify", "js");
+                            self.checkif("parse", "sass-to-css");
+                            self.checkif("parse", "less-to-css");
+                            self.valueify("sass");
+                            self.valueify("less");
                         }
 
                     }
@@ -454,7 +448,7 @@
             self._callbacks[self.getBuildForm()][self._mode].ends = callbackEnds;
             return this;
         },
-        
+
         response: function() {
             return self._response;
         },
@@ -495,11 +489,11 @@
             return this;
         },
 
-        checkif: function(name,responseValue) {
-            
+        checkif: function(name, responseValue) {
+
             fields = self._currentFields;
             response = self._response;
-            
+
             if (!fields) {
                 return this;
             }
@@ -513,7 +507,7 @@
             for (var i = 0; i < l; i++) {
                 if (fields[i].name === name) {
                     if (response[name] === responseValue) {
-                      fields[i].checked = true;
+                        fields[i].checked = true;
                     } else {
                         fields[i].checked = false;
                     }
@@ -527,7 +521,7 @@
 
             fields = self._currentFields;
             response = self._response;
-            
+
             if (!fields) {
                 return this;
             }
