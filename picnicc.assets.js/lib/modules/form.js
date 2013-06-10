@@ -271,7 +271,7 @@
                                     } else {
                                         fields[i].checked = false;
                                     }
-                                    
+
                                 }
                             }
                         }
@@ -463,7 +463,7 @@
             return self._error;
         },
 
-        checkboxify: function(arr, fields) {
+        checkboxify: function(type, arr, fields) {
 
             if (!fields) {
                 fields = self._currentFields;
@@ -476,10 +476,19 @@
             var l = fields.length;
 
             for (var i = 0; i < l; i++) {
-                if (arr.indexOf(fields[i].value) !== -1) {
-                    fields[i].checked = true;
-                } else {
-                    fields[i].checked = false;
+                if (type === "assets" && fields[i].name.substr(0, 6) === "assets") {
+                    if (arr.indexOf(fields[i].value) !== -1) {
+                        fields[i].checked = true;
+                    } else {
+                        fields[i].checked = false;
+                    }
+                }
+                if (type === "bits" && fields[i].name.substr(0, 4) === "bits") {
+                    if (arr.indexOf(fields[i].value) !== -1) {
+                        fields[i].checked = true;
+                    } else {
+                        fields[i].checked = false;
+                    }
                 }
             }
 
