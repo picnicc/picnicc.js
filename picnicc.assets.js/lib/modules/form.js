@@ -251,6 +251,8 @@
                         theResponse.behavior = parsed.behavior;
                         theResponse.parse = parsed.parse;
                         theResponse.minify = parsed.minify;
+                        theResponse.sass = parsed.sass;
+                        theResponse.less = parsed.less;
 
                         self._response = theResponse;
 
@@ -261,10 +263,15 @@
                                 if (fields[i]) {
                                     if (parsed.bits.indexOf(fields[i].value) !== -1) {
                                         fields[i].checked = true;
+                                    } else {
+                                        fields[i].checked = false;
                                     }
                                     if (parsed.assets.indexOf(fields[i].value) !== -1) {
                                         fields[i].checked = true;
+                                    } else {
+                                        fields[i].checked = false;
                                     }
+                                    
                                 }
                             }
                         }
@@ -471,6 +478,80 @@
             for (var i = 0; i < l; i++) {
                 if (arr.indexOf(fields[i].value) !== -1) {
                     fields[i].checked = true;
+                } else {
+                    fields[i].checked = false;
+                }
+            }
+
+            return this;
+        },
+
+        checkif: function(name,responseValue) {
+            
+            fields = self._currentFields;
+            response = self._response;
+            
+            if (!fields) {
+                return this;
+            }
+
+            if (!response) {
+                return this;
+            }
+
+            var l = fields.length;
+
+            for (var i = 0; i < l; i++) {
+                if (fields[i].name === name) {
+                    if (response[name] === responseValue) {
+                      fields[i].checked = true;
+                    } else {
+                        fields[i].checked = false;
+                    }
+                }
+            }
+
+            return this;
+        },
+
+        valueify: function(type) {
+
+            fields = self._currentFields;
+            response = self._response;
+            
+            if (!fields) {
+                return this;
+            }
+
+            if (!response) {
+                return this;
+            }
+
+            var l = fields.length;
+
+            var sass;
+            var less;
+
+            if (response.sass !== "none") {
+                sass = JSON.parse(response.sass);
+            }
+
+            if (response.less !== "none") {
+                less = JSON.parse(response.less);
+            }
+
+            for (var i = 0; i < l; i++) {
+
+                if (type === "sass" && sass && fields[i].name.substr(0, 4) === "sass") {
+                    // extract sass variable
+                    var sassVar = fields[i].name.match(/^sass\[(.*)\]$/);
+                    fields[i].value = sass[sassVar[1]];
+                }
+
+                if (type === "less" && less && fields[i].name.substr(0, 4) === "less") {
+                    // extract sass variable
+                    var lessVar = fields[i].name.match(/^less\[(.*)\]$/);
+                    fields[i].value = less[lessVar[1]];
                 }
             }
 

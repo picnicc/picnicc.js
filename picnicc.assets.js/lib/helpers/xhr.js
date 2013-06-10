@@ -66,6 +66,9 @@
 
             if (verb === 'POST') {
                 xhr.open("POST", url, async);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.setRequestHeader("Content-length", fields.length);
+                xhr.setRequestHeader("Connection", "close");
                 xhr.send(fields);
             }
 
